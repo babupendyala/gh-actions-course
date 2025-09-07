@@ -27,4 +27,4 @@ jobs:
         run: npm run build
 
       - name: Run Unit Tests
-        run: npm test -- --watchAll=false
+        run: npm run test
