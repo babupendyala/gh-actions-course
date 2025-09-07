@@ -9,12 +9,18 @@ on:
       description: "Enable debug mode"
       required: false
       default: "false"
+env:
+    MY_WORKFLOW_VAR: "workflow"
+    MY_OVERWRITTEN_VAR: "workflow"
+
 
 jobs: 
   echo-data:
     runs-on: ubuntu-latest
     env:
       MY_ENV: "This is from env block"
+      MY_JOB_VAR: "job"
+      MY_OVERWRITTEN_VAR: "job"
     steps:
       - name: Display contexts information
         run: |
@@ -34,3 +40,9 @@ jobs:
       - name: Debug Only Step
         if: ${{ inputs.debug == 'true' }}
         run: echo "Running in DEBUG mode!"
+      - name: Print Env Variables
+        env:
+            MY_OVERWRITTEN_VAR: 'step'
+        run: |
+         echo "workflow env: ${{env.MY_WORKFLOW_VAR}}"  
+         echo "Overwritten env: ${{env.MY_OVERWRITTEN_VAR}}"
