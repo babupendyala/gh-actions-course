@@ -1,6 +1,6 @@
 name: 04 - using Actions
 
-on: push
+on: workflow_dispatch
 
 jobs:
     build:
@@ -21,7 +21,5 @@ jobs:
               run: npm run test  
               
 
-        # 0. Checkout the from the repository
-        # 1. Install dependencies of our application
-        # Execute automated tests
+        
 
